@@ -24,5 +24,4 @@ def projects(request):
 def cv(request):
     return render(request, 'core/cv.html')
 
-def base(request):
-    return render(request, 'core/base.html')
+def base(request):    return render(request, 'core/base.html')
