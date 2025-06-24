@@ -1,123 +1,42 @@
-/* App.css */
-.app {
-  min-height: 100vh;
-  background-color: #000000;
-  position: relative; /* Changed from flex to relative */
-  padding-top: 120px; /* Add space for fixed navbar */
-}
-
-.container {
-  text-align: center;
-  max-width: 42rem;
+#root {
+  max-width: 1280px;
   margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: calc(100vh - 120px); /* Adjust height to account for navbar */
   padding: 2rem;
+  text-align: center;
 }
 
-.main-heading {
-  font-size: 3rem;
-  font-weight: 300;
-  color: white;
-  margin-bottom: 4rem;
-  line-height: 1.2;
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
 }
 
-@media (min-width: 768px) {
-  .main-heading {
-    font-size: 3.75rem;
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
   }
 }
 
-.social-icons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
 }
 
-.social-btn {
-  background-color: #374151;
-  border: none;
-  border-radius: 0.75rem;
-  padding: 1rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
+.card {
+  padding: 2em;
 }
 
-.social-btn:hover {
-  background-color: #4b5563;
-  transform: translateY(-2px);
-}
-
-.icon {
-  width: 1.5rem;
-  height: 1.5rem;
-  color: white;
-  transition: color 0.2s ease;
-}
-
-.social-btn:hover .icon-send {
-  color: #60a5fa;
-}
-
-.social-btn:hover .icon-paperclip {
-  color: #4ade80;
-}
-
-.social-btn:hover .icon-hash {
-  color: #a78bfa;
-}
-
-.social-btn:hover .icon-twitter {
-  color: #60a5fa;
-}
-
-.social-btn:hover .icon-linkedin {
-  color: #3b82f6;
-}
-
-.reach-out-btn {
-  background-color: #9e0dff;
-  color: white;
-  border: none;
-  padding: 0.75rem 1.5rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  margin-bottom: 3rem;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.reach-out-btn:hover {
-  background-color: #b74aff;
-  transform: scale(1.05);
-}
-
-.currently-section {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.currently-badge {
-  display: inline-block;
-  background-color: #69696b;
-  color: #d1d5db;
-  padding: 0.5rem 1rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 500;
-  align-self: center;
-}
-
-.current-role {
-  color: white;
-  font-size: 1.125rem;
-  margin: 0;
+.read-the-docs {
+  color: #888;
 }
