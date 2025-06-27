@@ -31,7 +31,8 @@ DEBUG = config("DJANGO_DEBUG", default="False", cast=bool)
 
 ALLOWED_HOSTS = [
         "localhost",
-        "127.0.0.1"
+        "127.0.0.1",
+        "portfolio-8llx.onrender.com"
     ]
 
 
@@ -62,8 +63,7 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8080",  # Next.js default
-    "http://127.0.0.1:8080",
-    "https://portfolio-8llx.onrender.com"  
+    "http://127.0.0.1:8080",  
 ]
 CORS_ALLOW_ALL_ORIGINS = True  # Uncomment to allow all origins (not recommended for production)
 
