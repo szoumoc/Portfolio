@@ -72,12 +72,12 @@ const Index = () => {
 
   const handleCVDownload = () => {
     // Replace with your actual CV download link
-    window.open('/cv.pdf', '_blank');
+    window.open('/resume.pdf', '_blank');
   };
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-slate-800 transition-colors duration-300">
+      <div className="min-h-screen bg-background text-foreground">
         <Navigation 
           activeSection={activeSection}
           onNavigate={scrollToSection}

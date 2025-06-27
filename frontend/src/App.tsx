@@ -5,6 +5,9 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
+import CustomCursor from "./components/CustomCursor";
+// If the file exists elsewhere, update the path accordingly, e.g.:
+// import CustomCursor from "../someOtherFolder/CustomCursor";
 
 const queryClient = new QueryClient();
 
@@ -13,6 +16,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <CustomCursor />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />

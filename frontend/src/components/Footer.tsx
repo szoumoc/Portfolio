@@ -1,52 +1,54 @@
-
-import { Github, Linkedin, Twitter, Mail, Heart } from 'lucide-react';
+import { Heart } from "lucide-react";
+import CButton from "./ContactButton";
 
 const Footer = () => {
-  const socialLinks = [
-    { icon: Github, href: 'https://github.com', label: 'GitHub' },
-    { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-    { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-    { icon: Mail, href: 'mailto:your.email@example.com', label: 'Email' },
-  ];
-
   return (
-    <footer className="py-12 px-4 bg-white/30 dark:bg-gray-900/30 backdrop-blur-sm border-t border-white/20 dark:border-gray-700/50">
-      <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
-          <div className="text-center md:text-left">
-            <h3 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent mb-2">
-              Let's Connect
-            </h3>
-            <p className="text-gray-600 dark:text-gray-400">
-              Always interested in new opportunities and collaborations
-            </p>
-          </div>
+    <footer className="bg-black text-white py-16 px-8 w-full">
+      <div className="w-full">
+        {/* Main Content Section */}
 
-          <div className="flex space-x-6">
-            {socialLinks.map((social, index) => (
-              <a
-                key={index}
-                href={social.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-3 bg-white/10 dark:bg-white/5 backdrop-blur-sm border border-white/20 dark:border-white/10 rounded-full hover:bg-white/20 dark:hover:bg-white/10 transition-all duration-300 group"
-                aria-label={social.label}
-              >
-                <social.icon className="w-5 h-5 text-gray-600 dark:text-gray-400 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors" />
+
+        {/* Footer Bottom */}
+        <div className="border-t border-gray-800 pt-8">
+        <div className="w-full px-4 lg:px-8">
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center space-y-8 lg:space-y-0 w-full">
+            
+            {/* Left Side - Links */}
+            <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-8 text-sm">
+              <a href="https://www.linkedin.com/in/szoumo/" target="_blank" className="text-white hover:text-gray-300 transition-colors uppercase tracking-wide">
+                LINKEDIN
               </a>
-            ))}
+              <a href="https://www.instagram.com/szoumo/" target="_blank" className="text-white hover:text-gray-300 transition-colors uppercase tracking-wide">
+                INSTAGRAM
+              </a>
+
+            </div>
+
+            {/* Center - Contact and Copyright */}
+            <div className="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-8 text-sm">
+              <a href="mailto:soumosaha2025gcrs@gmail.com" className="text-white hover:text-gray-300 transition-colors uppercase tracking-wide">
+                soumosaha2025gcrs@gmail.com
+              </a>
+              <span className="text-gray-500 uppercase tracking-wide">
+                ALL RIGHTS RESERVED SOUMO SAHA ©2025©
+              </span>
+            </div>
+
+            {/* Right Side - More Links */}
+ 
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-white/20 dark:border-gray-700/50 text-center">
-          <p className="text-gray-500 dark:text-gray-400 flex items-center justify-center space-x-1">
-            <span>Made with</span>
-            <Heart className="w-4 h-4 text-red-500 fill-current" />
-            <span>by Your Name</span>
-            <span>•</span>
-            <span>{new Date().getFullYear()}</span>
-          </p>
+        {/* Large Name Display */}
+        <div className="mt-16 w-full flex px-4 lg:px-8">
+          <h1 className="text-6xl sm:text-8xl lg:text-9xl xl:text-[12rem] text-white leading-none tracking-tighter text-left">
+            SOUMO SAHA
+          </h1>
+          <div className="flex items-center justify-center px-[10rem]">
+          <CButton />
+          </div>
         </div>
+      </div>
       </div>
     </footer>
   );

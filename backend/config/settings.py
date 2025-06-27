@@ -61,7 +61,8 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # Vite dev server
+    "http://localhost:8080",  # Next.js default
+    "http://127.0.0.1:8080",  # Vite dev server
 ]
 CORS_ALLOW_ALL_ORIGINS = True  # Uncomment to allow all origins (not recommended for production)
 

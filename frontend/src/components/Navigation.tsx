@@ -1,7 +1,7 @@
-
 import { Moon, Sun, Download } from 'lucide-react';
 import { useTheme } from './ThemeProvider';
 import { Button } from '@/components/ui/button';
+import { useState, useEffect } from 'react';
 
 interface NavigationProps {
   activeSection: string;
@@ -11,6 +11,7 @@ interface NavigationProps {
 
 const Navigation = ({ activeSection, onNavigate, onCVDownload }: NavigationProps) => {
   const { theme, toggleTheme } = useTheme();
+  const [isOpen, setIsOpen] = useState(false);
 
   const navItems = [
     { id: 'home', label: 'Home' },
@@ -18,60 +19,102 @@ const Navigation = ({ activeSection, onNavigate, onCVDownload }: NavigationProps
     { id: 'projects', label: 'Projects' },
   ];
 
+  const toggleSidebar = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleNavigate = (section: string) => {
+    onNavigate(section);
+    setIsOpen(false);
+  };
+
+  // Lock body scroll when sidebar is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    return () => {
+      document.body.classList.remove('overflow-hidden');
+    };
+  }, [isOpen]);
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 p-4">
-      <div className="max-w-6xl mx-auto">
-        <div className="backdrop-blur-lg bg-white/10 dark:bg-black/10 border border-white/20 dark:border-white/10 rounded-2xl shadow-xl">
-          <div className="flex items-center justify-between px-6 py-4">
-            <div className="flex items-center space-x-8">
-              <div className="font-bold text-xl bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                Portfolio
-              </div>
-              
-              <div className="hidden md:flex items-center space-x-6">
-                {navItems.map((item) => (
+    <>
+      {/* Top Navigation Bar */}
+      <nav className="fixed top-0 left-0 right-0 z-50 p-4">
+        <div className="w-full px-[4rem] mx-auto flex items-center justify-between">
+          <div></div>
+
+          <div className="flex items-center space-x-4">
+            {/* Resume Button */}
+            <Button
+              onClick={onCVDownload}
+              size="sm"
+              className="bg-white/10 hover:bg-white/20 text-white border border-white/20"
+            >
+              CV
+            </Button>
+
+            {/* Hamburger Menu Button */}
+            <button
+              onClick={toggleSidebar}
+              className="flex flex-col items-center justify-center w-8 h-8 space-y-1 text-white hover:text-white/80 transition-colors"
+            >
+              <div className="w-6 h-0.5 bg-current"></div>
+              <div className="w-6 h-0.5 bg-current"></div>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      {/* Sidebar Overlay */}
+      <div
+        className={`fixed inset-0 z-40 transition-opacity duration-300 ${
+          isOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        {/* Background Overlay */}
+        <div
+          className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+          onClick={toggleSidebar}
+        ></div>
+
+        {/* Sidebar */}
+        <div
+          className={`fixed top-0 right-0 h-full w-screen bg-black backdrop-blur-lg border-l border-white/20 transform transition-transform duration-300 ease-in-out ${
+            isOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          {/* Navigation Items */}
+          <div className="px-10 py-20 flex flex-col justify-center items-center h-full">
+            <div className="space-y-12">
+              {navItems.map((item, index) => (
+                <div key={item.id} className="text-center">
                   <button
-                    key={item.id}
-                    onClick={() => onNavigate(item.id)}
-                    className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 rounded-lg ${
+                    onClick={() => handleNavigate(item.id)}
+                    className={`text-4xl sm:text-5xl font-light transition-all duration-300 ${
                       activeSection === item.id
-                        ? 'text-blue-600 dark:text-blue-400 bg-white/20 dark:bg-white/10'
-                        : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-white/10'
+                        ? 'text-white'
+                        : 'text-white/70 hover:text-white hover:translate-x-2'
                     }`}
                   >
                     {item.label}
                   </button>
-                ))}
-              </div>
-            </div>
 
-            <div className="flex items-center space-x-4">
-              <Button
-                onClick={onCVDownload}
-                size="sm"
-                className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white border-0"
-              >
-                <Download className="w-4 h-4 mr-2" />
-                CV
-              </Button>
-              
-              <Button
-                onClick={toggleTheme}
-                variant="ghost"
-                size="sm"
-                className="p-2 rounded-lg bg-white/10 hover:bg-white/20 dark:bg-white/5 dark:hover:bg-white/10"
-              >
-                {theme === 'light' ? (
-                  <Moon className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-                ) : (
-                  <Sun className="w-5 h-5 text-gray-700 dark:text-gray-300" />
-                )}
-              </Button>
+                  {/* Separator dash */}
+                  {index < navItems.length - 1 && (
+                    <div className="mt-8 w-16 h-px mx-auto bg-white/30"></div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
-    </nav>
+    </>
   );
 };
 

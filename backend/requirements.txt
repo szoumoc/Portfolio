@@ -6,5 +6,5 @@ psycopg2-binary>=2.9.9
 django-tailwind>=3.5  # optional if you want Tailwind via Django app
 dj-database-url>=0.5.0
 django-cors-headers>=3.13.0
-djangorest-framework>=3.14.0
-djangocors-headers>=3.13.0
+djangorestframework >=3.16.0
+Pillow>=11.2.1

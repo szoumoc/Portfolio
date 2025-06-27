@@ -1,40 +1,86 @@
-
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, Instagram } from 'lucide-react';
+import { Github, Linkedin, Twitter, Mail } from 'lucide-react';
+import React from 'react';
+import { FaGithub, FaLinkedin, FaSpotify, FaInstagram } from 'react-icons/fa';
+import { HiOutlineMail } from 'react-icons/hi';
+import Button from './PlayButton';
+import RecruiterButton from './PrimaryButton';
+import ScrollDownWheel from './ScrollDownWheel';
 
 const HeroSection = () => {
+  // Social media links
+  const socialLinks = [
+    {
+      href: 'https://github.com/your-username',
+      icon: FaGithub,
+      label: 'GitHub',
+      color: 'white',
+    },
+    {
+      href: 'https://linkedin.com/in/your-username',
+      icon: FaLinkedin,
+      label: 'LinkedIn',
+      color: 'indigo',
+    },
+    {
+      href: 'https://spotify.com/user/your-username',
+      icon: FaSpotify,
+      label: 'Spotify',
+      color: 'green',
+    },
+    {
+      href: 'https://instagram.com/your-username',
+      icon: FaInstagram,
+      label: 'Instagram',
+      color: 'red',
+    },
+    {
+      href: 'mailto:your@email.com',
+      icon: HiOutlineMail,
+      label: 'Mail',
+      color: 'white',
+    },
+  ];
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center px-4 pt-20">
-      <div className="max-w-4xl mx-auto text-center">
-        <div className="animate-fade-in">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-gray-900 via-blue-800 to-purple-800 dark:from-white dark:via-blue-200 dark:to-purple-200 bg-clip-text text-transparent">
-            Hello, I'm
-          </h1>
-          <h2 className="text-4xl md:text-6xl font-bold mb-8 text-gray-800 dark:text-white">
-            Your Name
-          </h2>
-          <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-            Full Stack Developer passionate about creating beautiful, functional, and user-centered digital experiences.
-          </p>
+    <section
+      id="home"
+      className="min-h-screen flex items-center bg-black justify-center px-4 pt-20 w-full"
+    >
+      <div className="relative w-full h-full">
+        {/* Top-left corner logo text */}
+        <div className="absolute top-6 left-6 text-red-500 font-serif text-lg tracking-wide">
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-            <button
-              onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-semibold hover:from-blue-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
-            >
-              View My Work
-            </button>
-            <button
-              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-              className="px-8 py-4 border-2 border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-full font-semibold hover:border-blue-600 hover:text-blue-600 dark:hover:border-blue-400 dark:hover:text-blue-400 transition-all duration-300"
-            >
-              Learn More
-            </button>
-          </div>
         </div>
+
+        {/* Abstract shape (can be replaced with image or SVG later) */}
         
-        <div className="animate-bounce">
-          <ArrowDown className="w-6 h-6 mx-auto text-gray-400 dark:text-gray-500" />
+        {/* Distorted Typography right side */}
+        <div className="absolute right-0 top-12 text-[16rem] font-black tracking-tighter leading-none text-black opacity-100 z-0">
+          <span className="text-[20rem] px-[5rem] text-white font-black -ml-10">SZ</span><br />
+          <span className="text-[20rem] text-red-600 font-black -ml-10">'25</span>
+          
         </div>
+
+
+        {/* Intro Content */}
+        <div className="relative z-10 flex flex-col min-h-screen max-w-6xl px-6 md:px-20">
+          <h2 className="text-4xl md:text-[12rem] py-[5rem] font-inter font-regular text-white mb-4">
+            SOUMO
+          </h2>
+
+          {/* Optional location note */}
+          <p className="mt-6 text-sm px-[1rem] uppercase tracking-widest text-gray-500 dark:text-gray-400">
+            Based in India
+          </p>
+          <h3 className="mt-6 text-sm px-[1rem] uppercase tracking-widest text-white">
+            use technology — bend it to solve, to scale, to lead. Every product is a reflection of logic, creativity, and execution.
+          </h3>
+          <ScrollDownWheel />
+          
+        </div>
+
+        {/* Down Arrow */}
+
       </div>
     </section>
   );
