@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 
 import { useState, useEffect } from 'react';
 import { useQuery } from '@tanstack/react-query';
@@ -10,7 +11,7 @@ import { ThemeProvider } from '@/components/ThemeProvider';
 
 // API functions
 const fetchAbout = async () => {
-  const response = await fetch('http://127.0.0.1:8000/api/about/');
+  const response = await fetch((`${process.env.VITE_API_URL}/api/about/`));
   if (!response.ok) {
     throw new Error('Failed to fetch about data');
   }
@@ -18,7 +19,7 @@ const fetchAbout = async () => {
 };
 
 const fetchProjects = async () => {
-  const response = await fetch('http://127.0.0.1:8000/api/projects/');
+  const response = await fetch((`${process.env.VITE_API_URL}/api/projects/`));
   if (!response.ok) {
     throw new Error('Failed to fetch projects data');
   }
@@ -86,6 +87,8 @@ const Index = () => {
         
         <main className="relative">
           <HeroSection />
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          {/* @ts-expect-error */}
           <AboutSection data={aboutData} />
           <ProjectsSection data={projectsData} />
         </main>

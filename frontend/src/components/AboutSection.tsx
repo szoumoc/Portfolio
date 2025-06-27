@@ -12,7 +12,7 @@ interface AboutSectionProps {
   apiUrl?: string;
 }
 
-const AboutSection = ({ apiUrl = 'http://localhost:8000/api/about/' }: AboutSectionProps) => {
+const AboutSection = ({ apiUrl = `${process.env.VITE_API_URL}/api/about/` }: AboutSectionProps) => {
   const [aboutData, setAboutData] = useState<AboutData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
